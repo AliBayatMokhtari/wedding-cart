@@ -23,11 +23,11 @@ withDefaults(
     </div>
     <span
       aria-hidden="true"
-      class="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-gold-soft shadow-soft"
+      class="i-mdi-star-four-points absolute -top-2 -left-2 text-2xl text-gold drop-shadow-sm"
     />
     <span
       aria-hidden="true"
-      class="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-gold-soft shadow-soft"
+      class="i-mdi-star-four-points absolute -bottom-2 -right-2 text-2xl text-gold drop-shadow-sm"
     />
   </figure>
 </template>
