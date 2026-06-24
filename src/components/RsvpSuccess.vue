@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { RsvpResponse } from '@/stores/wedding'
+import type { Guest } from '@/api/wedding'
 
 const props = defineProps<{
-  response: RsvpResponse
+  guest: Guest
 }>()
 
-const isAccepted = computed(() => props.response === 'accepted')
+const isAccepted = computed(() => props.guest.rsvp?.accepted === true)
 </script>
 
 <template>
@@ -20,7 +20,9 @@ const isAccepted = computed(() => props.response === 'accepted')
       <span :class="isAccepted ? 'i-mdi-check text-3xl' : 'i-mdi-heart text-3xl'" />
     </div>
     <p class="eyebrow mt-3">{{ isAccepted ? 'Reply received' : 'Noted with love' }}</p>
-    <h3 class="mt-6 font-display text-[2.2rem] text-rose-500 leading-tight">Thank you</h3>
+    <h3 class="mt-6 font-display text-[2.2rem] text-rose-500 leading-tight">
+      Thank you, {{ guest.name }}
+    </h3>
     <p class="mt-3 font-serif text-ink-soft">
       <template v-if="isAccepted">
         We can't wait to celebrate with you. Your spot is saved with love.

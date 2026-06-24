@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useWeddingStore } from '@/stores/wedding'
 import { useReveal } from '@/composables/useReveal'
 import FloralAccent from '@/components/FloralAccent.vue'
+import Ampersand from './Ampersand.vue'
 
 const store = useWeddingStore()
 const root = ref<HTMLElement | null>(null)
@@ -27,7 +28,9 @@ useReveal(root)
 
       <p class="mt-10 font-display text-[1.6rem] text-rose-400">With love,</p>
       <p class="mt-1 font-serif text-[1.15rem] text-ink">
-        {{ store.couple.displayName }}
+        {{ store.couple.partnerOne }}
+        <Ampersand />
+        {{ store.couple.partnerTwo }}
       </p>
     </div>
   </section>
