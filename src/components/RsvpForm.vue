@@ -69,10 +69,10 @@ async function submit() {
         v-model="form.message"
         class="input-base mt-2 min-h-[110px] resize-y"
         placeholder="Share a wish, a memory, or just hello..."
-        maxlength="500"
+        maxlength="1000"
       />
       <span class="mt-1 block text-right text-[0.75rem] text-ink-muted">
-        {{ form.message.length }} / 500
+        {{ form.message.length }} / 1000
       </span>
     </label>
 
