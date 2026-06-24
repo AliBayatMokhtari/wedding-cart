@@ -10,28 +10,25 @@ const form = reactive({
   message: '',
 })
 
-const submitting = ref(false)
-const error = ref('')
+const localError = ref('')
 
-const canSubmit = computed(() => form.response !== null && !submitting.value)
+const canSubmit = computed(() => form.response !== null && !store.submitting)
 
 async function submit() {
-  error.value = ''
+  localError.value = ''
   if (!form.response) {
-    error.value = 'Please let us know if you can make it.'
+    localError.value = 'Please let us know if you can make it.'
     return
   }
 
-  submitting.value = true
-  // Tiny simulated delay so the button transition feels intentional
-  await new Promise((r) => setTimeout(r, 350))
-
-  store.addRsvp({
-    response: form.response,
-    message: form.message.trim(),
-  })
-
-  submitting.value = false
+  try {
+    await store.submitRsvp({
+      accepted: form.response === 'accepted',
+      message: form.message.trim(),
+    })
+  } catch {
+    // store.submitError is already set; nothing else to do here.
+  }
 }
 </script>
 
@@ -76,14 +73,18 @@ async function submit() {
       </span>
     </label>
 
-    <p v-if="error" class="mt-3 text-[0.85rem] text-rose-500" role="alert">
-      {{ error }}
+    <p
+      v-if="localError || store.submitError"
+      class="mt-3 text-[0.85rem] text-rose-500"
+      role="alert"
+    >
+      {{ localError || store.submitError }}
     </p>
 
     <button type="submit" class="btn-cta" :disabled="!canSubmit" :aria-disabled="!canSubmit">
-      <span v-if="submitting" class="i-mdi-loading text-xl animate-spin" aria-hidden="true" />
+      <span v-if="store.submitting" class="i-mdi-loading text-xl animate-spin" aria-hidden="true" />
       <span v-else class="i-mdi-heart text-xl" aria-hidden="true" />
-      <span>{{ submitting ? 'Sending...' : 'Send my reply' }}</span>
+      <span>{{ store.submitting ? 'Sending...' : 'Send my reply' }}</span>
     </button>
   </form>
 </template>

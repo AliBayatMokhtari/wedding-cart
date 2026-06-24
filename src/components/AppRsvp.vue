@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useReveal } from '@/composables/useReveal'
 import RsvpForm from '@/components/RsvpForm.vue'
 import RsvpSuccess from '@/components/RsvpSuccess.vue'
+import RsvpLoading from '@/components/RsvpLoading.vue'
+import RsvpMessage from '@/components/RsvpMessage.vue'
+import RsvpWelcome from '@/components/RsvpWelcome.vue'
 import { useWeddingStore } from '@/stores/wedding'
 
 const store = useWeddingStore()
 const root = ref<HTMLElement | null>(null)
 useReveal(root)
+
+const guestName = computed(() => store.guest?.name ?? 'friend')
+
+onMounted(() => {
+  const hashId = new URLSearchParams(window.location.search).get('g')
+  if (hashId) {
+    void store.loadGuest(hashId)
+  }
+})
 </script>
 
 <template>
@@ -23,9 +35,21 @@ useReveal(root)
         </p>
       </div>
 
-      <RsvpSuccess v-if="store.submitted" :response="store.lastResponse!" />
+      <RsvpWelcome v-if="store.guest" :name="guestName" />
 
-      <RsvpForm v-else />
+      <RsvpMessage v-if="!store.loading && !store.guest && !store.loadError">
+        Please use the personalised link from your invitation to open RSVP form.
+      </RsvpMessage>
+
+      <RsvpMessage v-if="store.loadError" tone="danger">
+        {{ store.loadError }}
+      </RsvpMessage>
+
+      <RsvpLoading v-if="store.loading" />
+
+      <RsvpSuccess v-else-if="store.guest?.rsvp" :guest="store.guest" />
+
+      <RsvpForm v-else-if="store.guest" />
     </div>
   </section>
 </template>

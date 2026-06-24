@@ -61,7 +61,7 @@ useReveal(root)
         </p>
         <span class="h-px w-14 bg-gradient-to-r from-transparent via-gold to-transparent" />
         <p class="eyebrow mt-2">{{ store.couple.venue }}</p>
-        <p class="font-sans text-[0.85rem] text-ink-soft">
+        <p class="font-serif text-[0.85rem] text-ink-soft">
           {{ store.couple.address }}
         </p>
       </div>
