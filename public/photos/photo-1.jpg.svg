@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3dcd5" />
+      <stop offset="50%" stop-color="#e8c0b6" />
+      <stop offset="100%" stop-color="#d4a5a5" />
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#fff8f0" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#fff8f0" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg1)" />
+  <rect width="400" height="500" fill="url(#glow1)" />
+  <g fill="#c9a961" opacity="0.35">
+    <circle cx="60" cy="80" r="2" />
+    <circle cx="340" cy="120" r="2" />
+    <circle cx="320" cy="380" r="2" />
+    <circle cx="80" cy="420" r="2" />
+  </g>
+  <g transform="translate(200 250)" fill="#fff" opacity="0.85">
+    <text text-anchor="middle" font-family="Great Vibes, cursive" font-size="80" y="0">A</text>
+  </g>
+  <text x="200" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#9b5b5f" opacity="0.6" letter-spacing="3">PLACEHOLDER · PHOTO 1</text>
+</svg>
