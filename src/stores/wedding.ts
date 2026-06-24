@@ -59,7 +59,7 @@ export const useWeddingStore = defineStore('wedding', () => {
     try {
       const updated = await submitRsvpRequest(guest.value.hashId, {
         accepted: payload.accepted,
-        message: payload.message,
+        message: payload.message || null,
       })
       guest.value = updated
     } catch (err) {

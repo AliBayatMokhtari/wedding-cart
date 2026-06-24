@@ -10,7 +10,7 @@ export function getGuest(hashId: string): Promise<Guest> {
 
 export function submitRsvp(
   hashId: string,
-  body: { accepted: boolean; message?: string },
+  body: { accepted: boolean; message: string | null },
 ): Promise<Guest> {
   return request<Guest>(`/api/guests/${hashId}/rsvp`, {
     method: 'POST',
