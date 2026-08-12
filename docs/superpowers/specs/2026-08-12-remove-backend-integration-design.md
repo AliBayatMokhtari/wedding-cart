@@ -37,7 +37,7 @@ The whole `src/api/` tree is gone with those three files.
 
 ### `src/App.vue`
 
-Remove the `AppRsvp` import and the `<AppRsvp />` element. Remove the surrounding `<FloralDivider />` that previously separated Details from RSVP, since its only purpose was RSVP spacing. The new page flow:
+Remove the `AppRsvp` import and the `<AppRsvp />` element. Of the two `FloralDivider`s that bracket `AppRsvp` in the current template, keep the one between `AppDetails` and `AppFooter` (now the only divider after Details) and drop the one that previously sat between `AppRsvp` and `AppFooter`. The new page flow:
 
 ```
 Cover  →  Story  →  Photos  →  Details  →  Footer
