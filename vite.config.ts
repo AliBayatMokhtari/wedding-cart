@@ -7,6 +7,7 @@ import UnoCSS from 'unocss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/wedding-cart/',
   plugins: [UnoCSS(), vue(), vueDevTools()],
   server: {
     host: '0.0.0.0',
