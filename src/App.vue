@@ -3,7 +3,6 @@ import AppCover from '@/components/AppCover.vue'
 import AppPhotos from '@/components/AppPhotos.vue'
 import AppStory from '@/components/AppStory.vue'
 import AppDetails from '@/components/AppDetails.vue'
-import AppRsvp from '@/components/AppRsvp.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import FloralDivider from '@/components/FloralDivider.vue'
 import FloralBackdrop from '@/components/FloralBackdrop.vue'
@@ -29,8 +28,6 @@ import FloralBackdrop from '@/components/FloralBackdrop.vue'
       <AppDetails />
 
       <FloralDivider />
-
-      <AppRsvp />
 
       <AppFooter />
     </main>
